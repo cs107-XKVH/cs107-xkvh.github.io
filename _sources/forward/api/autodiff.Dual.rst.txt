@@ -4,11 +4,6 @@
 .. currentmodule:: autodiff
 
 .. autoclass:: Dual
+   :members:
 
-    
-
- 
-
-    
-
- 
+   .. autoclasstoc::

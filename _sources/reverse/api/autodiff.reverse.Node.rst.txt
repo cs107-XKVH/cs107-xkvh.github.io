@@ -4,9 +4,6 @@
 .. currentmodule:: autodiff.reverse
 
 .. autoclass:: Node
+   :members:
 
-    
-
- 
-
-     
+   .. autoclasstoc::

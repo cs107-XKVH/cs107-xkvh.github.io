@@ -351,8 +351,8 @@ forward mode automatic differentiation.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.constant</span></code></dt><dd></dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.from_array</span></code></dt><dd></dd>
+<dt><a class="reference internal" href="#autodiff.Dual.constant" title="autodiff.Dual.constant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.constant</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#autodiff.Dual.from_array" title="autodiff.Dual.from_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.from_array</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Examples</p>
@@ -388,7 +388,7 @@ forward mode automatic differentiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndim</span></code></dt><dd><p>Return the number of dimensions of the Dual number.</p>
+<dt><a class="reference internal" href="#autodiff.Dual.ndim" title="autodiff.Dual.ndim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndim</span></code></a></dt><dd><p>Return the number of dimensions of the Dual number.</p>
 </dd>
 </dl>
 </dd>
@@ -400,14 +400,106 @@ forward mode automatic differentiation.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">constant</span></code>(val[, ndim])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#autodiff.Dual.constant" title="autodiff.Dual.constant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constant</span></code></a>(val[, ndim])</p></td>
 <td><p>Create a Dual number representing a constant.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_array</span></code>(X)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#autodiff.Dual.from_array" title="autodiff.Dual.from_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_array</span></code></a>(X)</p></td>
 <td><p>Generate Dual numbers for a multivariable function.</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py property">
+<dt class="sig sig-object py" id="autodiff.Dual.ndim">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ndim</span></span><a class="headerlink" href="#autodiff.Dual.ndim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of dimensions of the Dual number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">Dual</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">int</span></dt><dd><p>Number of dimensions.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Dual</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mf">6.2</span><span class="p">])</span><span class="o">.</span><span class="n">ndim</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>More than one dimension:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Dual</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">ndim</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.Dual.constant">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.Dual.constant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Dual number representing a constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>val</strong><span class="classifier">int or float</span></dt><dd><p>Value of dual number.</p>
+</dd>
+<dt><strong>ndim</strong><span class="classifier">int, optional</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">ndim</span></code> is the number of dimensions of the zero derivative vector.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">Dual</span></dt><dd><p>Dual number of value <code class="docutils literal notranslate"><span class="pre">val</span></code> with zero derivative vector.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Derivative vector of length <code class="docutils literal notranslate"><span class="pre">ndim</span></code> will be filled with zeros.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Dual</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="go">Dual(42, array([0.]))</span>
+</pre></div>
+</div>
+<p>Constant with more than one dimension:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Dual</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">Dual(7, array([0., 0.]))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.Dual.from_array">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.Dual.from_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate Dual numbers for a multivariable function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array</span></dt><dd><p>Array of numbers which will be values of Dual numbers.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">Dual number generator</span></dt><dd><p>Dual numbers of value <code class="docutils literal notranslate"><span class="pre">X[i]</span></code> with zero derivative vector
+where the i-th element has a value of 1.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Dual</span><span class="o">.</span><span class="n">from_array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">42</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">Dual(1, array([1., 0.]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">Dual(42, array([0., 1.]))</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
