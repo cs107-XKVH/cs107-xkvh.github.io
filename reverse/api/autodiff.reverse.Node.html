@@ -332,27 +332,211 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="autodiff.reverse.Node">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.reverse.</span></span><span class="sig-name descname"><span class="pre">Node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.reverse.Node" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Methods</p>
-<table class="table">
+<dd><p>Primary data structure for reverse mode automatic differentiation.</p>
+<p>The process of evaluating derivatives in reverse mode consists of
+two passes, forward pass and reverse pass. During the forward pass,
+we calculate the primal values and the local gradient of child nodes
+with respect of each parent node in the computational graph. 
+In the reverse pass, we recursively calculate the gradients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>val</strong><span class="classifier">float</span></dt><dd><p>The value of the Node.</p>
+</dd>
+<dt><strong>children</strong><span class="classifier">list</span></dt><dd><p>List of tuples of (weight, child) where weight is the weight of the
+sensitivity of the child node with respect to the parent node and child
+is the child node.</p>
+</dd>
+<dt><strong>der</strong><span class="classifier">float</span></dt><dd><p>Initialiazed to None, represents the derivative of the last descendent
+with respect to self.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#autodiff.reverse.Node.grad" title="autodiff.reverse.Node.grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node.grad</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#autodiff.reverse.Node.zero_grad" title="autodiff.reverse.Node.zero_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node.zero_grad</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#autodiff.reverse.Node.constant" title="autodiff.reverse.Node.constant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node.constant</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#autodiff.reverse.Node.from_array" title="autodiff.reverse.Node.from_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node.from_array</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Construct a Node for a univariate function:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">Node(42)</span>
+</pre></div>
+</div>
+<p>Construct multiple Nodes from array of scalars:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="o">.</span><span class="n">from_array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">Node(1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">Node(2)</span>
+</pre></div>
+</div>
+<p>Create a function from multiple Nodes:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="o">.</span><span class="n">from_array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">z</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">val</span>
+<span class="go">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">()</span>
+<span class="go">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">grad</span><span class="p">()</span>
+<span class="go">0.25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="o">.</span><span class="n">grad</span><span class="p">()</span>
+<span class="go">-0.125</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
 <colgroup>
-<col style="width: 58%" />
-<col style="width: 42%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><strong>constant</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#autodiff.reverse.Node.constant" title="autodiff.reverse.Node.constant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">constant</span></code></a>(val)</p></td>
+<td><p>Create a Node representing a constant.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>from_array</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#autodiff.reverse.Node.from_array" title="autodiff.reverse.Node.from_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_array</span></code></a>(X)</p></td>
+<td><p>Generate Nodes for a multivariable function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>grad</strong></p></td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#autodiff.reverse.Node.grad" title="autodiff.reverse.Node.grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grad</span></code></a>()</p></td>
+<td><p>Return the gradient of the last descendent with respect to self.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>zero_grad</strong></p></td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#autodiff.reverse.Node.zero_grad" title="autodiff.reverse.Node.zero_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_grad</span></code></a>(*args)</p></td>
+<td><p>Reset Nodes to their default attributes.</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.reverse.Node.grad">
+<span class="sig-name descname"><span class="pre">grad</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.reverse.Node.grad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the gradient of the last descendent with respect to self.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>self: Node</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>out: float</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#autodiff.reverse.Node.zero_grad" title="autodiff.reverse.Node.zero_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node.zero_grad</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">y</span>
+<span class="go">Node(4)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">()</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">grad</span><span class="p">()</span>
+<span class="go">3.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.reverse.Node.zero_grad">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">zero_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.reverse.Node.zero_grad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset Nodes to their default attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>*args: arbitrary number of Nodes</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#autodiff.reverse.Node.grad" title="autodiff.reverse.Node.grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node.grad</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">()</span>
+<span class="go">-0.9899924966004454</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">()</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.reverse.Node.constant">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.reverse.Node.constant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Node representing a constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>val</strong><span class="classifier">int or float</span></dt><dd><p>Value of Node.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">Node</span></dt><dd><p>Node of value <cite>val</cite> with children set to None and der set to 1.0.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="go">Node(42)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">Node(1)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.reverse.Node.from_array">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.reverse.Node.from_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate Nodes for a multivariable function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">array</span></dt><dd><p>Array of numbers which will be values of Nodes.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">Node generator</span></dt><dd><p>Nodes of value <cite>X[i]</cite> with der set to None
+and an empty list of children.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="o">.</span><span class="n">from_array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">Node(1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">Node(2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span>
+<span class="go">Node(3)</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>

@@ -332,7 +332,30 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="autodiff.reverse.Node.__rpow__">
 <span class="sig-prename descclassname"><span class="pre">Node.</span></span><span class="sig-name descname"><span class="pre">__rpow__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.reverse.Node.__rpow__" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return <cite>other</cite> to the power of <cite>self</cite> if <cite>other</cite> is not a Node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">Node</span></dt><dd></dd>
+<dt><strong>other</strong><span class="classifier">int, float</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">Node</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">**</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">Node(25)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">3</span>
+<span class="go">Node(8)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">Node(8)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </section>
 

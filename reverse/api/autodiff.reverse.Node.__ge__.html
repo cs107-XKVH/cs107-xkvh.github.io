@@ -332,7 +332,38 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="autodiff.reverse.Node.__ge__">
 <span class="sig-prename descclassname"><span class="pre">Node.</span></span><span class="sig-name descname"><span class="pre">__ge__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.reverse.Node.__ge__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return self&gt;=value.</p>
+<dd><p>Return element-wise (value and derivative) greater than or equal comparison of
+<cite>self</cite> and <cite>other</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">Node</span></dt><dd></dd>
+<dt><strong>other</strong><span class="classifier">int, float, Node</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">tuple</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If either <cite>other</cite> or self has None der. We return None for the derivative comparison and 
+give user a warning indicating that they are attempting to compare two Nodes before their
+derivatives are computed.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">(True, True)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="go">(False, True)</span>
+</pre></div>
+</div>
+<p>Warning before derivatives are computed:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">5</span>
+<span class="go">RuntimeWarning: Attempting to compare two nodes with None derivatives</span>
+<span class="go">(True, None)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

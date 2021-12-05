@@ -332,7 +332,58 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="autodiff.reverse.Node.__pow__">
 <span class="sig-prename descclassname"><span class="pre">Node.</span></span><span class="sig-name descname"><span class="pre">__pow__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.reverse.Node.__pow__" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return <cite>self</cite> to the power of <cite>other</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>self</strong><span class="classifier">Node</span></dt><dd></dd>
+<dt><strong>other</strong><span class="classifier">int, float</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">Node</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If <cite>other</cite> is a non-integer scalar and <cite>self.val</cite> is less than zero,
+the derivative is a complex number. This will raise a ValueError. Only integer
+powers are supported if the base is negative.</p>
+<p>If <cite>self.val</cite> is equal to zero and <cite>other</cite> is less than one, we cannot
+compute the derivative of the result due to a ZeroDivisionError.</p>
+<p>If <cite>other</cite> is a Node and <cite>self.val</cite> is less than or equal to zero, we cannot
+compute the derivative of the result since the log of a negative number is
+not defined. This will raise a ValueError.</p>
+<p class="rubric">Examples</p>
+<p>Node and scalar:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">5</span>
+<span class="go">Node(32)</span>
+</pre></div>
+</div>
+<p>Two nodes:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">Node(8)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">Node(8)</span>
+</pre></div>
+</div>
+<p>Example of errors raised (see notes above):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Node</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mf">1.2</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">-1 cannot be raised to the power of 1.2; only integer powers are allowed if base is negative</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">**</span> <span class="o">-</span><span class="mi">2</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">ZeroDivisionError</span>: <span class="n">0.0 cannot be raised to a negative power</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">**</span> <span class="n">Node</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">0 cannot be raised to the power of 1; log is undefined for x = 0</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </section>
 
