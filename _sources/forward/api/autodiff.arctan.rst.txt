@@ -1,0 +1,6 @@
+﻿autodiff.arctan
+===============
+
+.. currentmodule:: autodiff
+
+.. autofunction:: arctan

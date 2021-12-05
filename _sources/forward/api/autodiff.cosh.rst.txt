@@ -1,0 +1,6 @@
+﻿autodiff.cosh
+=============
+
+.. currentmodule:: autodiff
+
+.. autofunction:: cosh

@@ -1,0 +1,6 @@
+﻿autodiff.reverse.exp
+====================
+
+.. currentmodule:: autodiff.reverse
+
+.. autofunction:: exp

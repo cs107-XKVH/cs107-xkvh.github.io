@@ -1,0 +1,6 @@
+﻿autodiff.cos
+============
+
+.. currentmodule:: autodiff
+
+.. autofunction:: cos

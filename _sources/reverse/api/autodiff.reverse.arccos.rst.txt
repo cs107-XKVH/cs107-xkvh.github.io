@@ -1,0 +1,6 @@
+﻿autodiff.reverse.arccos
+=======================
+
+.. currentmodule:: autodiff.reverse
+
+.. autofunction:: arccos

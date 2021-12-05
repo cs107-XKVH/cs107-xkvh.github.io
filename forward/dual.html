@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Dual &#8212; ac207-autodiff 0.0.2 documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="autodiff.Dual" href="api/autodiff.Dual.html" />
+    <link rel="prev" title="Forward mode" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">ac207-autodiff</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Forward mode
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../reverse/index.html">
+  Reverse mode
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Dual
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.html">
+     autodiff.Dual
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__add__.html">
+     autodiff.Dual.__add__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__radd__.html">
+     autodiff.Dual.__radd__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__sub__.html">
+     autodiff.Dual.__sub__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__rsub__.html">
+     autodiff.Dual.__rsub__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__mul__.html">
+     autodiff.Dual.__mul__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__rmul__.html">
+     autodiff.Dual.__rmul__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__truediv__.html">
+     autodiff.Dual.__truediv__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__rtruediv__.html">
+     autodiff.Dual.__rtruediv__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__pow__.html">
+     autodiff.Dual.__pow__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__rpow__.html">
+     autodiff.Dual.__rpow__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__neg__.html">
+     autodiff.Dual.__neg__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__lt__.html">
+     autodiff.Dual.__lt__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__gt__.html">
+     autodiff.Dual.__gt__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__le__.html">
+     autodiff.Dual.__le__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__ge__.html">
+     autodiff.Dual.__ge__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__eq__.html">
+     autodiff.Dual.__eq__
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.Dual.__ne__.html">
+     autodiff.Dual.__ne__
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="elementary_functions.html">
+   Elementary operations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.sin.html">
+     autodiff.sin
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.cos.html">
+     autodiff.cos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.tan.html">
+     autodiff.tan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.sinh.html">
+     autodiff.sinh
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.cosh.html">
+     autodiff.cosh
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.tanh.html">
+     autodiff.tanh
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.arcsin.html">
+     autodiff.arcsin
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.arccos.html">
+     autodiff.arccos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.arctan.html">
+     autodiff.arctan
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.exp.html">
+     autodiff.exp
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.log.html">
+     autodiff.log
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.sqrt.html">
+     autodiff.sqrt
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="api/autodiff.logistic.html">
+     autodiff.logistic
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#constructor">
+   Constructor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dunder-methods">
+   Dunder Methods
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="dual">
+<h1>Dual<a class="headerlink" href="#dual" title="Permalink to this headline">¶</a></h1>
+<section id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/autodiff.Dual.html#autodiff.Dual" title="autodiff.Dual"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual</span></code></a>(val[, der])</p></td>
+<td><p>Primary data structure for forward mode automatic differentiation.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dunder-methods">
+<h2>Dunder Methods<a class="headerlink" href="#dunder-methods" title="Permalink to this headline">¶</a></h2>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/autodiff.Dual.__add__.html#autodiff.Dual.__add__" title="autodiff.Dual.__add__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__add__</span></code></a>(other)</p></td>
+<td><p>Return the sum of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/autodiff.Dual.__radd__.html#autodiff.Dual.__radd__" title="autodiff.Dual.__radd__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__radd__</span></code></a>(other)</p></td>
+<td><p>Return the sum of two numbers, when the left operand is not a Dual number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/autodiff.Dual.__sub__.html#autodiff.Dual.__sub__" title="autodiff.Dual.__sub__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__sub__</span></code></a>(other)</p></td>
+<td><p>Returns the difference between <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/autodiff.Dual.__rsub__.html#autodiff.Dual.__rsub__" title="autodiff.Dual.__rsub__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__rsub__</span></code></a>(other)</p></td>
+<td><p>Return the difference between two numbers, when the left operand is not a Dual number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/autodiff.Dual.__mul__.html#autodiff.Dual.__mul__" title="autodiff.Dual.__mul__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__mul__</span></code></a>(other)</p></td>
+<td><p>Return the product of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/autodiff.Dual.__rmul__.html#autodiff.Dual.__rmul__" title="autodiff.Dual.__rmul__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__rmul__</span></code></a>(other)</p></td>
+<td><p>Return the product of two numbers, when the left operand is not a Dual number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/autodiff.Dual.__truediv__.html#autodiff.Dual.__truediv__" title="autodiff.Dual.__truediv__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__truediv__</span></code></a>(other)</p></td>
+<td><p>Return the quotient of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/autodiff.Dual.__rtruediv__.html#autodiff.Dual.__rtruediv__" title="autodiff.Dual.__rtruediv__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__rtruediv__</span></code></a>(other)</p></td>
+<td><p>Return the quotient of two numbers, when the left operand is not a Dual number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/autodiff.Dual.__pow__.html#autodiff.Dual.__pow__" title="autodiff.Dual.__pow__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__pow__</span></code></a>(other)</p></td>
+<td><p>Return <code class="docutils literal notranslate"><span class="pre">self</span></code> to the power of <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/autodiff.Dual.__rpow__.html#autodiff.Dual.__rpow__" title="autodiff.Dual.__rpow__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__rpow__</span></code></a>(other)</p></td>
+<td><p>Return <code class="docutils literal notranslate"><span class="pre">other</span></code> to the power of <code class="docutils literal notranslate"><span class="pre">self</span></code> if <code class="docutils literal notranslate"><span class="pre">other</span></code> is not a Dual number.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/autodiff.Dual.__neg__.html#autodiff.Dual.__neg__" title="autodiff.Dual.__neg__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__neg__</span></code></a>()</p></td>
+<td><p>Return negation of <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/autodiff.Dual.__lt__.html#autodiff.Dual.__lt__" title="autodiff.Dual.__lt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__lt__</span></code></a>(other)</p></td>
+<td><p>Return element-wise (value and derivative vector) less than comparison of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/autodiff.Dual.__gt__.html#autodiff.Dual.__gt__" title="autodiff.Dual.__gt__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__gt__</span></code></a>(other)</p></td>
+<td><p>Return element-wise (value and derivative vector) greater than comparison of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/autodiff.Dual.__le__.html#autodiff.Dual.__le__" title="autodiff.Dual.__le__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__le__</span></code></a>(other)</p></td>
+<td><p>Return element-wise (value and derivative vector) less than or equal to comparison of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/autodiff.Dual.__ge__.html#autodiff.Dual.__ge__" title="autodiff.Dual.__ge__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__ge__</span></code></a>(other)</p></td>
+<td><p>Return element-wise (value and derivative vector) greater than or equal to comparison of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/autodiff.Dual.__eq__.html#autodiff.Dual.__eq__" title="autodiff.Dual.__eq__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__eq__</span></code></a>(other)</p></td>
+<td><p>Return element-wise (value and derivative vector) equality comparison of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/autodiff.Dual.__ne__.html#autodiff.Dual.__ne__" title="autodiff.Dual.__ne__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dual.__ne__</span></code></a>(other)</p></td>
+<td><p>Return element-wise (value and derivative vector) inequality comparison of <code class="docutils literal notranslate"><span class="pre">self</span></code> and <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Forward mode</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="api/autodiff.Dual.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">autodiff.Dual</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Xuliang Guo, Kamran Ahmed, Van Anh Le, Hanwen Cui.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.1.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

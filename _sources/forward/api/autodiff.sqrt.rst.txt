@@ -1,0 +1,6 @@
+﻿autodiff.sqrt
+=============
+
+.. currentmodule:: autodiff
+
+.. autofunction:: sqrt

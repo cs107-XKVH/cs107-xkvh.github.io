@@ -1,0 +1,6 @@
+﻿autodiff.log
+============
+
+.. currentmodule:: autodiff
+
+.. autofunction:: log

@@ -1,0 +1,6 @@
+﻿autodiff.reverse.Node.\_\_truediv\_\_
+=====================================
+
+.. currentmodule:: autodiff.reverse
+
+.. automethod:: Node.__truediv__

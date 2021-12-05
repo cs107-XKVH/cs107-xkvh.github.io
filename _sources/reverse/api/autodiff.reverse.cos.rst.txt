@@ -1,0 +1,6 @@
+﻿autodiff.reverse.cos
+====================
+
+.. currentmodule:: autodiff.reverse
+
+.. autofunction:: cos

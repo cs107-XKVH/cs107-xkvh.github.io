@@ -1,0 +1,6 @@
+﻿autodiff.logistic
+=================
+
+.. currentmodule:: autodiff
+
+.. autofunction:: logistic

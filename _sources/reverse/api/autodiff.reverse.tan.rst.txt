@@ -1,0 +1,6 @@
+﻿autodiff.reverse.tan
+====================
+
+.. currentmodule:: autodiff.reverse
+
+.. autofunction:: tan

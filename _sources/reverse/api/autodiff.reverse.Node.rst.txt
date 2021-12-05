@@ -1,0 +1,12 @@
+﻿autodiff.reverse.Node
+=====================
+
+.. currentmodule:: autodiff.reverse
+
+.. autoclass:: Node
+
+    
+
+ 
+
+     

@@ -1,0 +1,6 @@
+﻿autodiff.reverse.sin
+====================
+
+.. currentmodule:: autodiff.reverse
+
+.. autofunction:: sin

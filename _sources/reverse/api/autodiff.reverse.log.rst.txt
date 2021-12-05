@@ -1,0 +1,6 @@
+﻿autodiff.reverse.log
+====================
+
+.. currentmodule:: autodiff.reverse
+
+.. autofunction:: log

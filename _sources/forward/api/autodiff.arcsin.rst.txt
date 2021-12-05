@@ -1,0 +1,6 @@
+﻿autodiff.arcsin
+===============
+
+.. currentmodule:: autodiff
+
+.. autofunction:: arcsin

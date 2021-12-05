@@ -1,0 +1,6 @@
+﻿autodiff.reverse.Node.\_\_sub\_\_
+=================================
+
+.. currentmodule:: autodiff.reverse
+
+.. automethod:: Node.__sub__

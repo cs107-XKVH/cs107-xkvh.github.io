@@ -1,0 +1,6 @@
+﻿autodiff.reverse.cosh
+=====================
+
+.. currentmodule:: autodiff.reverse
+
+.. autofunction:: cosh

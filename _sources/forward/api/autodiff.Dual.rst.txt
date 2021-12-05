@@ -1,0 +1,14 @@
+﻿autodiff.Dual
+=============
+
+.. currentmodule:: autodiff
+
+.. autoclass:: Dual
+
+    
+
+ 
+
+    
+
+ 

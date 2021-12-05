@@ -1,0 +1,6 @@
+﻿autodiff.reverse.sinh
+=====================
+
+.. currentmodule:: autodiff.reverse
+
+.. autofunction:: sinh

@@ -1,0 +1,6 @@
+﻿autodiff.reverse.tanh
+=====================
+
+.. currentmodule:: autodiff.reverse
+
+.. autofunction:: tanh

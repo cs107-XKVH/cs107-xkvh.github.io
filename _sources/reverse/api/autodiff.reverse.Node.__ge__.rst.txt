@@ -1,0 +1,6 @@
+﻿autodiff.reverse.Node.\_\_ge\_\_
+================================
+
+.. currentmodule:: autodiff.reverse
+
+.. automethod:: Node.__ge__

@@ -1,0 +1,6 @@
+﻿autodiff.Dual.\_\_sub\_\_
+=========================
+
+.. currentmodule:: autodiff
+
+.. automethod:: Dual.__sub__

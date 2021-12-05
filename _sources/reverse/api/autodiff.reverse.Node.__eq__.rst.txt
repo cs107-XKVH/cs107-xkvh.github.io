@@ -1,0 +1,6 @@
+﻿autodiff.reverse.Node.\_\_eq\_\_
+================================
+
+.. currentmodule:: autodiff.reverse
+
+.. automethod:: Node.__eq__

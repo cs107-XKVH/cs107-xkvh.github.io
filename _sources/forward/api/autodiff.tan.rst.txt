@@ -1,0 +1,6 @@
+﻿autodiff.tan
+============
+
+.. currentmodule:: autodiff
+
+.. autofunction:: tan

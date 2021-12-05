@@ -1,0 +1,6 @@
+﻿autodiff.tanh
+=============
+
+.. currentmodule:: autodiff
+
+.. autofunction:: tanh

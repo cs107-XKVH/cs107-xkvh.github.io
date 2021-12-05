@@ -1,0 +1,6 @@
+﻿autodiff.reverse.logistic
+=========================
+
+.. currentmodule:: autodiff.reverse
+
+.. autofunction:: logistic
