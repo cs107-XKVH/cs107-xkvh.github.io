@@ -331,17 +331,18 @@
 <h1>autodiff.reverse.log<a class="headerlink" href="#autodiff-reverse-log" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="autodiff.reverse.log">
-<span class="sig-prename descclassname"><span class="pre">autodiff.reverse.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.reverse.log" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the natural logarithm of x.</p>
+<span class="sig-prename descclassname"><span class="pre">autodiff.reverse.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.718281828459045</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.reverse.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the logarithm of x of any base, default to natural log.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>x</strong><span class="classifier">int, float, Node</span></dt><dd></dd>
+<dt><strong>x</strong><span class="classifier">int, float, Dual</span></dt><dd></dd>
+<dt><strong>base</strong><span class="classifier">int, float</span></dt><dd></dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>y</strong><span class="classifier">float or Node</span></dt><dd></dd>
+<dt><strong>out</strong><span class="classifier">float or Dual</span></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -357,12 +358,30 @@
 <span class="go">Node(0.6931471805599453)</span>
 </pre></div>
 </div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">Node(0.30102999566398114)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">Node(1.0)</span>
+</pre></div>
+</div>
 <p>Derivative undefined:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
 <span class="c">...</span>
 <span class="gr">ValueError</span>: <span class="n">Log of x is undefined for x = 0</span>
+</pre></div>
+</div>
+<p>Error when base is non-positive:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ad</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ad</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">Cannot have non-positive base</span>
 </pre></div>
 </div>
 </dd></dl>
